@@ -8,9 +8,53 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
 	<div class="container-fluid fw-light fs-3 shadow-none border-0 py-3" style="outline: none;" contenteditable="true">
 		Write....
+		<div class="fixed-bottom p-2">
+			<button id="fullscreenBtn" class="btn btn-outline-light">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+					<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+					<g id="SVGRepo_iconCarrier">
+						<path d="M3 21L21 3M3 21H7.5M3 21L3 16.5M21 3H16.5M21 3V7.5" stroke="#828282" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round"></path>
+					</g>
+				</svg>
+			</button>
+		</div>
 	</div>
+
+	<script>
+		const fullscreenBtn = document.getElementById('fullscreenBtn');
+		const documentElement = document.documentElement; // This targets the whole window
+
+		fullscreenBtn.addEventListener('click', function () {
+			if (!document.fullscreenElement) {
+				// Request full screen on the entire window/document
+				if (documentElement.requestFullscreen) {
+					documentElement.requestFullscreen();
+				} else if (documentElement.webkitRequestFullscreen) { /* Safari */
+					documentElement.webkitRequestFullscreen();
+				} else if (documentElement.msRequestFullscreen) { /* IE/Edge */
+					documentElement.msRequestFullscreen();
+				}
+
+			} else {
+				// Exit full screen
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				} else if (document.webkitExitFullscreen) { /* Safari */
+					document.webkitExitFullscreen();
+				} else if (document.msExitFullscreen) { /* IE/Edge */
+					document.msExitFullscreen();
+				}
+
+			}
+		});
+
+	</script>
 </body>
+
 </html>
